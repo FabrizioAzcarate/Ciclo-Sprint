@@ -5,6 +5,9 @@ class LibraryService:
         self.games = []
 
     def add_game(self, title, genre):
+        if self.find_game(title):
+            raise Exception(f"El juego '{title}' ya existe en la biblioteca")
+
         game = Game(title, genre)
         self.games.append(game)
         return game
